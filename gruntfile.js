@@ -99,47 +99,51 @@ module.exports = function (grunt) {
 
 	function es6ify() {
 		var content = getJSON(grunt);
+		let output = '';
+		const countryEnNames = content.map(({ countryName }) => countryName);
+		const countryArNames = content.map(({ countryName, countryNameAr }) => countryNameAr ? countryNameAr : countryName);
+		const countryCodes = content.map(({ countryShortCode }) => countryShortCode);
 
-		const countryNames = content.map(({ countryName }) => countryName);
-		let output = `export const countryNames = ${JSON.stringify(countryNames)};\n`;
-
-		const countryShortCodes = content.map(({ countryShortCode }) => countryShortCode);
-		output += `export const countryShortCodes = ${JSON.stringify(countryShortCodes)};\n`;
-
-		content.map(({ countryName, countryShortCode, regions }) => {
-			output += `export const ${countryShortCode} = [\n\t"${countryName}",\n\t"${countryShortCode}",\n\t[\n${regions.map(({ name, shortCode }) => `\t\t["${name}", "${shortCode}"]`).join(",\n")}\n\t]\n];\n`;
+		output += `export const countriesMap = new Map([\n`;
+		content.map(({ countryName, countryNameAr, countryShortCode, regions }) => {
+			output += `[\n\t"${countryShortCode}", {\n\t\tdisplayEn: "${countryName}",\n\t\tdisplayAr: "${countryNameAr ? countryNameAr : countryName}",\n\t\tvalue:"${countryShortCode}",\n\t\tregions:[\n${regions.map(({ name, nameAr, shortCode }) => `\t\t\t{displayEn:"${name}", displayAr:"${nameAr ? nameAr : name}", value:"${shortCode}"}`).join(",\n")}\n\t\t]\n\t}\n],\n`;
 		});
+		output +=`]);\n`;
 
-		output += `export const allCountries = [${countryShortCodes.join(",")}];\n`;
-
-		const countryTuples = content.map(({ countryName, countryShortCode }) => [countryName, countryShortCode]);
-		output += `export const countryTuples = ${JSON.stringify(countryTuples)};\n`;
+		output += `export const countries = [\n`
+		content.map(({ countryName, countryNameAr, countryShortCode, regions }) => {
+			output += `\t{\n\t\tdisplayEn: "${countryName}",\n\t\tdisplayAr: "${countryNameAr ? countryNameAr : countryName}",\n\t\tvalue:"${countryShortCode}",\n\t\tregions:[\n${regions.map(({ name, nameAr, shortCode }) => `\t\t\t{displayEn:"${name}", displayAr:"${nameAr ? nameAr : name}", value:"${shortCode}"}`).join(",\n")}\n\t\t]\n\t},\n`;
+		});
+		output +=`];\n`;
 
 		const file = 'dist/data.js';
 		grunt.file.write(file, output);
 
 		// now generate the corresponding typings file
-		let typingsOutput = `declare module 'country-region-data' {
-	export type CountryName = "${countryNames.join('" | "')}";\n`;
-		typingsOutput += `\texport type CountrySlug = "${countryShortCodes.join('" | "')}";\n`;
-		typingsOutput += `\texport type RegionName = string;
-	export type RegionSlug = string;
-
-	export const countryNames: CountryName[];
-	export const countryShortCodes: CountrySlug[];
-	export const countryTuples: [CountryName, CountrySlug][];
-	export type Region = [RegionName, RegionSlug];
+		let typingsOutput = `declare module '@qfast/country-region-data' {
+	export type CountryNameEn = "${countryEnNames.join('" | "')}";\n
+	export type CountryNameAr = "${countryArNames.join('" | "')}";\n`;
+		typingsOutput += `\texport type CountryCode = "${countryCodes.join('" | "')}";\n`;
+		typingsOutput += `\texport const countryEnNames: CountryNameEn[];
+	export const countryArNames: CountryNameAr[];
+	export const countryCodes: CountryCode[];
+	export type Region = {
+		displayEn: string,
+		displayAr: string,
+		value: string
+	};
 	
-	export type CountryData = [
-		CountryName,
-		CountrySlug,
-		Region[]
-	];
+	export type CountryData = {
+		displayEn: CountryNameEn,
+		displayAr: CountryNameAr,
+		value: CountryCode,
+		regions: Region[]
+	};
 	
-	export const allCountries: CountryData[];	
-	export default allCountries;
+	export const countries: CountryData[];	
+	export const countriesMap:  Map<string, CountryData>;	
+	export default countries;
 `;
-		typingsOutput += countryShortCodes.map((shortCode) => `\texport const ${shortCode}: CountryData;`).join("\n");
 		typingsOutput += '\n}\n';
 
 		const typingsFile = 'dist/data.d.ts';

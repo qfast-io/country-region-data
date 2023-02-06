@@ -4207,122 +4207,152 @@
   },
   {
     "countryName": "Egypt",
+    "countryNameAr": "مصر",
     "countryShortCode": "EG",
     "regions": [
       {
         "name": "Alexandria",
+        "nameAr": "الإسكندرية",
         "shortCode": "ALX"
       },
       {
         "name": "Aswan",
+        "nameAr": "اسوان",
         "shortCode": "ASN"
       },
       {
         "name": "Asyout",
+        "nameAr": "أسيوط",
         "shortCode": "AST"
       },
       {
         "name": "Bani Sueif",
+        "nameAr": "بني سويف",
         "shortCode": "BNS"
       },
       {
         "name": "Beheira",
+        "nameAr": "البحيرة",
         "shortCode": "BH"
       },
       {
         "name": "Cairo",
+        "nameAr": "القاهرة",
         "shortCode": "C"
       },
       {
         "name": "Daqahlia",
+        "nameAr": "الدقهلية",
         "shortCode": "DK"
       },
       {
-        "name": "Dumiat",
+        "name": "Dumyat",
+        "nameAr": "دمياط",
         "shortCode": "DT"
       },
       {
         "name": "El Bahr El Ahmar",
+        "nameAr": "البحر الأحمر",
         "shortCode": "BA"
       },
       {
         "name": "El Ismailia",
+        "nameAr": "الإسماعيلية",
         "shortCode": "IS"
       },
       {
         "name": "El Suez",
+        "nameAr": "السويس",
         "shortCode": "SUZ"
       },
       {
         "name": "El Wadi El Gedeed",
+        "nameAr": "الوادي الجديد",
         "shortCode": "WAD"
       },
       {
         "name": "Fayoum",
+        "nameAr": "الفيوم",
         "shortCode": "FYM"
       },
       {
         "name": "Gharbia",
+        "nameAr":"الغربية",
         "shortCode": "GH"
       },
       {
         "name": "Giza",
+        "nameAr": "الجيزة",
         "shortCode": "GZ"
       },
       {
         "name": "Helwan",
+        "nameAr": "حلوان",
         "shortCode": "HU"
       },
       {
         "name": "Kafr El Sheikh",
+        "nameAr": "كفر الشيخ",
         "shortCode": "KFS"
       },
       {
         "name": "Luxor",
+        "nameAr": "الأقصر",
         "shortCode": "LX"
       },
       {
         "name": "Matrouh",
+        "nameAr": "مطروح",
         "shortCode": "MT"
       },
       {
         "name": "Menia",
+        "nameAr": "المنيا",
         "shortCode": "MN"
       },
       {
         "name": "Menofia",
+        "nameAr": "المنوفية",
         "shortCode": "MNF"
       },
       {
         "name": "North Sinai",
+        "nameAr": "شمال سيناء",
         "shortCode": "SIN"
       },
       {
         "name": "Port Said",
+        "nameAr": "بورسعيد",
         "shortCode": "PTS"
       },
       {
         "name": "Qalubia",
+        "nameAr": "القليوبية",
         "shortCode": "KB"
       },
       {
         "name": "Qena",
+        "nameAr": "قنا",
         "shortCode": "KN"
       },
       {
         "name": "Sharqia",
+        "nameAr": "الشرقية",
         "shortCode": "SHR"
       },
       {
         "name": "Sixth of October",
+        "nameAr": "السادس من اكتوبر",
         "shortCode": "SU"
       },
       {
         "name": "Sohag",
+        "nameAr": "سوهاج",
         "shortCode": "SHG"
       },
       {
         "name": "South Sinai",
+        "nameAr": "جنوب سيناء",
         "shortCode": "JS"
       }
     ]

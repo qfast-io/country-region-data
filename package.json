@@ -1,6 +1,6 @@
 {
   "name": "@qfast/country-region-data",
-  "version": "2.7.3",
+  "version": "2.7.4",
   "description": "List of countries, regions, and their codes.",
   "main": "dist/data.js",
   "typings": "dist/data.d.ts",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/QFast-io/country-region-data.git"
+    "url": "git+https://github.com/qfast-io/country-region-data.git"
   },
   "keywords": [
     "country",
@@ -20,9 +20,9 @@
   "author": "Mawaziny/QFast",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/QFast-io/country-region-data/issues"
+    "url": "https://github.com/qfast-io/country-region-data/issues"
   },
-  "homepage": "https://github.com/QFast-io/country-region-data",
+  "homepage": "https://github.com/qfast-io/country-region-data",
   "devDependencies": {
     "grunt": "^1.1.0",
     "libumd": "^0.7.0",
